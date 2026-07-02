@@ -127,4 +127,10 @@ def build(targets: Optional[list[str]] = None) -> None:
     # Generate index
     from .index_generator import generate_index
     generate_index()
+
+    # Generate navigation JSON and inject nav tree into pages
+    from .nav_generator import generate_nav_json, inject_nav_into_pages
+    generate_nav_json()
+    inject_nav_into_pages()
+
     print("Done.")

@@ -16,8 +16,14 @@ INDEX_TEMPLATE = """<!DOCTYPE html>
 </head>
 <body>
     <nav class="top-nav">
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu">&#9776;</button>
         <span class="nav-title">&#128193; dividendos</span>
     </nav>
+    <aside class="side-nav" id="sideNav">
+        <div class="side-nav-header">Pages</div>
+        <div class="side-nav-tree" id="sideNavTree"></div>
+    </aside>
+    <div class="nav-overlay" id="navOverlay"></div>
     <main class="content index-page">
         <h1>File Index</h1>
         <p class="index-subtitle">Generated on {generated_date}</p>
