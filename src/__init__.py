@@ -1,1 +1,1 @@
-# dividendos - Markdown to HTML static site generator
+# md2html - Markdown to HTML static site generator

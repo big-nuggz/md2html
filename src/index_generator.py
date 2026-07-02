@@ -22,7 +22,7 @@ def generate_index() -> None:
         md_content = welcome_path.read_text(encoding='utf-8')
         body_html = convert_md_to_html(md_content)
     else:
-        body_html = '<p>Welcome to dividendos. Add content to <code>md/index.md</code> to customize this page.</p>'
+        body_html = '<p>Welcome to md2html. Add content to <code>md/index.md</code> to customize this page.</p>'
 
     index_html = INDEX_TEMPLATE.format(
         body=body_html,

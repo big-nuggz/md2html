@@ -1,6 +1,6 @@
 # Setup Notes
 
-Personal notes about setting up the dividendos project.
+Personal notes about setting up the md2html project.
 
 ## Requirements
 
@@ -35,7 +35,7 @@ If you get permission errors on Windows, try:
 Make sure you're running the script from the project root directory:
 
 ```
-dividendos/
+md2html/
 ├── src/
 ├── md/
 └── out/

@@ -1,4 +1,4 @@
-// dividendos - Static site JavaScript
+// md2html - Static site JavaScript
 // Provides interactive features for the generated pages.
 
 (function () {

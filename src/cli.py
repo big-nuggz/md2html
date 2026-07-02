@@ -1,4 +1,4 @@
-"""Command-line interface for the dividendos markdown-to-HTML converter."""
+"""Command-line interface for the md2html markdown-to-HTML converter."""
 
 import sys
 import argparse
@@ -28,7 +28,7 @@ def main() -> None:
     parser.add_argument(
         '--version',
         action='version',
-        version='dividendos 0.1.0',
+        version='md2html 0.1.0',
     )
 
     args = parser.parse_args()

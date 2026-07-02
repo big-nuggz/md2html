@@ -1,6 +1,6 @@
 # Getting Started Guide
 
-This guide will help you get up and running with dividendos.
+This guide will help you get up and running with md2html.
 
 ## Installation
 

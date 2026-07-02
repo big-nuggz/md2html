@@ -1,4 +1,4 @@
-# Welcome to dividendos
+# Welcome to md2html
 
 This is a **static site** generated from Markdown files.
 
@@ -22,7 +22,7 @@ This is a **static site** generated from Markdown files.
 def hello(name: str) -> str:
     return f"Hello, {name}!"
 
-print(hello("dividendos"))
+print(hello("md2html"))
 ```
 
 ## Directory Structure

@@ -1,4 +1,4 @@
-# dividendos
+# md2html
 
 A **zero-dependency** (beyond `markdown` + `pygments`) static site generator that converts Markdown files to clean, responsive HTML pages. No server needed — just open the generated files in your browser.
 
@@ -34,7 +34,7 @@ python -m src.cli md/a.md md/b.md
 ## Project Structure
 
 ```
-dividendos/
+md2html/
 ├── src/                # Python scripts
 │   ├── cli.py          # CLI entry point (argparse)
 │   ├── builder.py      # Build orchestrator
