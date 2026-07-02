@@ -19,12 +19,16 @@
         if (open) {
             sideNav.classList.remove('-translate-x-full');
             sideNav.classList.add('translate-x-0');
+            sideNav.classList.add('z-[200]');
+            sideNav.classList.remove('z-[90]');
             navOverlay.classList.remove('opacity-0', 'pointer-events-none');
             navOverlay.classList.add('opacity-100');
             document.body.classList.add('overflow-hidden', 'lg:overflow-auto');
         } else {
             sideNav.classList.remove('translate-x-0');
             sideNav.classList.add('-translate-x-full');
+            sideNav.classList.remove('z-[200]');
+            sideNav.classList.add('z-[90]');
             navOverlay.classList.remove('opacity-100');
             navOverlay.classList.add('opacity-0', 'pointer-events-none');
             document.body.classList.remove('overflow-hidden', 'lg:overflow-auto');
