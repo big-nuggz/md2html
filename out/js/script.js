@@ -128,6 +128,60 @@
         }
     });
 
+    // --- Sortable tables ---
+    (function () {
+        var tables = document.querySelectorAll('.content table');
+        tables.forEach(function (table) {
+            var headers = table.querySelectorAll('th');
+            headers.forEach(function (header, index) {
+                header.style.cursor = 'pointer';
+                header.style.userSelect = 'none';
+                header.addEventListener('click', function () {
+                    sortTable(table, index, header);
+                });
+            });
+        });
+
+        function sortTable(table, colIndex, header) {
+            var tbody = table.querySelector('tbody') || table;
+            var rows = Array.from(tbody.querySelectorAll('tr'));
+
+            // Don't sort if there's only a header row
+            if (rows.length <= 1) return;
+
+            // Determine sort direction
+            var isAscending = header.getAttribute('data-sort-dir') !== 'asc';
+            var allHeaders = table.querySelectorAll('th');
+            allHeaders.forEach(function (h) {
+                h.removeAttribute('data-sort-dir');
+                h.classList.remove('sort-asc', 'sort-desc');
+            });
+            header.setAttribute('data-sort-dir', isAscending ? 'asc' : 'desc');
+            header.classList.add(isAscending ? 'sort-asc' : 'sort-desc');
+
+            rows.sort(function (rowA, rowB) {
+                var cellA = rowA.cells[colIndex] ? rowA.cells[colIndex].textContent.trim() : '';
+                var cellB = rowB.cells[colIndex] ? rowB.cells[colIndex].textContent.trim() : '';
+
+                // Try numeric comparison
+                var numA = parseFloat(cellA.replace(/[,$%Â¥Â£â‚¬\s]/g, ''));
+                var numB = parseFloat(cellB.replace(/[,$%Â¥Â£â‚¬\s]/g, ''));
+                if (!isNaN(numA) && !isNaN(numB)) {
+                    return isAscending ? numA - numB : numB - numA;
+                }
+
+                // Text comparison
+                var cmp = cellA.localeCompare(cellB, undefined, { numeric: true });
+                return isAscending ? cmp : -cmp;
+            });
+
+            // Re-append sorted rows
+            rows.forEach(function (row) {
+                tbody.appendChild(row);
+            });
+        }
+    })();
+
     // --- Smooth scroll for anchor links ---
     document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
         anchor.addEventListener('click', function (e) {

@@ -286,6 +286,25 @@
     background: #ffffff;
 }
 
+/* --- Sortable Tables --- */
+.content th.sort-asc::after,
+.content th.sort-desc::after {
+    content: '';
+    display: inline-block;
+    margin-left: 0.4rem;
+    vertical-align: middle;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+}
+
+.content th.sort-asc::after {
+    border-bottom: 6px solid #0969da;
+}
+
+.content th.sort-desc::after {
+    border-top: 6px solid #0969da;
+}
+
 /* --- Dark Mode - Native media query (must be last to win cascade) --- */
 @media (prefers-color-scheme: dark) {
     .content h1 { border-bottom-color: #30363d; }
@@ -319,6 +338,8 @@
     .folder-name:hover { color: #58a6ff; }
     .file-item a { color: #58a6ff; }
     .file-item a:hover { color: #79c0ff; }
+    .content th.sort-asc::after { border-bottom-color: #58a6ff; }
+    .content th.sort-desc::after { border-top-color: #58a6ff; }
     .empty-state { color: #8b949e; }
     .empty-state code { background: #0d1117; }
 }
