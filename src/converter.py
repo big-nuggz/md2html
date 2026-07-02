@@ -14,18 +14,12 @@ def convert_md_to_html(md_content: str) -> str:
     """Convert Markdown string to HTML body content."""
     extensions = [
         'fenced_code',
-        'codehilite',
         'tables',
         'toc',
         'sane_lists',
         'smarty',
     ]
-    extension_configs = {
-        'codehilite': {
-            'css_class': 'highlight',
-            'guess_lang': True,
-        },
-    }
+    extension_configs = {}
     html = markdown.markdown(
         md_content,
         extensions=extensions,
