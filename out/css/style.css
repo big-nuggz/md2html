@@ -37,10 +37,6 @@
     border-bottom: 1px solid #d0d7de;
 }
 
-.dark .content h1 {
-    border-bottom-color: #30363d;
-}
-
 .content h2 {
     font-size: 1.5rem;
     font-weight: 600;
@@ -48,10 +44,6 @@
     margin-bottom: 0.75rem;
     padding-bottom: 0.3rem;
     border-bottom: 1px solid #d0d7de;
-}
-
-.dark .content h2 {
-    border-bottom-color: #30363d;
 }
 
 .content h3 {
@@ -77,10 +69,6 @@
     text-decoration: none;
 }
 
-.dark .content a {
-    color: #58a6ff;
-}
-
 .content a:hover {
     text-decoration: underline;
 }
@@ -101,10 +89,6 @@
     padding: 0.2em 0.4em;
     border-radius: 3px;
     font-size: 0.85em;
-}
-
-.dark .content code {
-    background: #161b22;
 }
 
 .content pre {
@@ -133,12 +117,6 @@
     border-radius: 0 6px 6px 0;
 }
 
-.dark .content blockquote {
-    border-left-color: #58a6ff;
-    color: #8b949e;
-    background: #161b22;
-}
-
 .content table {
     width: 100%;
     border-collapse: collapse;
@@ -154,36 +132,19 @@
     text-align: left;
 }
 
-.dark .content th,
-.dark .content td {
-    border-color: #30363d;
-}
-
 .content th {
     background: #f6f8fa;
     font-weight: 600;
-}
-
-.dark .content th {
-    background: #161b22;
 }
 
 .content tr:nth-child(even) {
     background: #f6f8fa;
 }
 
-.dark .content tr:nth-child(even) {
-    background: #161b22;
-}
-
 .content hr {
     border: none;
     border-top: 1px solid #d0d7de;
     margin: 1.5rem 0;
-}
-
-.dark .content hr {
-    border-top-color: #30363d;
 }
 
 .content img {
@@ -219,19 +180,10 @@
     transition: background 0.15s, border-color 0.15s;
 }
 
-.dark .nav-link {
-    color: #e6edf3;
-}
-
 .nav-link:hover {
     background: #f6f8fa;
     text-decoration: none;
     border-left-color: #0969da;
-}
-
-.dark .nav-link:hover {
-    background: #161b22;
-    border-left-color: #58a6ff;
 }
 
 .nav-link.current {
@@ -239,12 +191,6 @@
     border-left-color: #0969da;
     font-weight: 600;
     color: #0969da;
-}
-
-.dark .nav-link.current {
-    background: #161b22;
-    border-left-color: #58a6ff;
-    color: #58a6ff;
 }
 
 .nav-folder-summary {
@@ -255,10 +201,6 @@
     color: #656d76;
     user-select: none;
     list-style: none;
-}
-
-.dark .nav-folder-summary {
-    color: #8b949e;
 }
 
 .nav-folder-summary::-webkit-details-marker {
@@ -274,20 +216,12 @@
     color: #656d76;
 }
 
-.dark .nav-folder-summary::before {
-    color: #8b949e;
-}
-
 .nav-details[open] > .nav-folder-summary::before {
     transform: rotate(90deg);
 }
 
 .nav-folder-summary:hover {
     color: #0969da;
-}
-
-.dark .nav-folder-summary:hover {
-    color: #58a6ff;
 }
 
 .nav-folder-contents {
@@ -306,10 +240,6 @@
     text-align: center;
 }
 
-.dark .nav-empty {
-    color: #8b949e;
-}
-
 /* --- Index Page File Tree --- */
 .folder {
     margin-bottom: 0.25rem;
@@ -324,10 +254,6 @@
 
 .folder-name:hover {
     color: #0969da;
-}
-
-.dark .folder-name:hover {
-    color: #58a6ff;
 }
 
 .folder-contents {
@@ -345,16 +271,8 @@
     color: #0969da;
 }
 
-.dark .file-item a {
-    color: #58a6ff;
-}
-
 .file-item a:hover {
     color: #0550ae;
-}
-
-.dark .file-item a:hover {
-    color: #79c0ff;
 }
 
 .empty-state {
@@ -364,14 +282,43 @@
     font-style: italic;
 }
 
-.dark .empty-state {
-    color: #8b949e;
-}
-
 .empty-state code {
     background: #ffffff;
 }
 
-.dark .empty-state code {
-    background: #0d1117;
+/* --- Dark Mode - Native media query (must be last to win cascade) --- */
+@media (prefers-color-scheme: dark) {
+    .content h1 { border-bottom-color: #30363d; }
+    .content h2 { border-bottom-color: #30363d; }
+    .content a { color: #58a6ff; }
+    .content code { background: #161b22; }
+    .content blockquote {
+        border-left-color: #58a6ff;
+        color: #8b949e;
+        background: #161b22;
+    }
+    .content th,
+    .content td { border-color: #30363d; }
+    .content th { background: #161b22; }
+    .content tr:nth-child(even) { background: #161b22; }
+    .content hr { border-top-color: #30363d; }
+    .nav-link { color: #e6edf3; }
+    .nav-link:hover {
+        background: #161b22;
+        border-left-color: #58a6ff;
+    }
+    .nav-link.current {
+        background: #161b22;
+        border-left-color: #58a6ff;
+        color: #58a6ff;
+    }
+    .nav-folder-summary { color: #8b949e; }
+    .nav-folder-summary::before { color: #8b949e; }
+    .nav-folder-summary:hover { color: #58a6ff; }
+    .nav-empty { color: #8b949e; }
+    .folder-name:hover { color: #58a6ff; }
+    .file-item a { color: #58a6ff; }
+    .file-item a:hover { color: #79c0ff; }
+    .empty-state { color: #8b949e; }
+    .empty-state code { background: #0d1117; }
 }
