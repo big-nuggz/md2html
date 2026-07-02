@@ -72,10 +72,40 @@ md2html/
 - **Asset passthrough** — images, PDFs, etc. are copied verbatim
 - **Orphan cleanup** — removed `.html` files are cleaned on full rebuild
 
+## Writing Content
+
+All your content lives in the `md/` directory. The structure you create there is mirrored exactly in the output.
+
+### Markdown Files
+
+- Create `.md` files anywhere inside `md/` — they become `.html` pages in `out/files/`
+- Organize with subdirectories: `md/guides/topic.md` → `out/files/guides/topic.html`
+- Link between pages using standard Markdown links: `[see guide](../guides/topic.md)` — these are automatically rewritten to `.html` links
+- The `md/index.md` file is **special** — its content is rendered as the homepage at `out/index.html` (it is *not* copied to `out/files/`)
+
+### Images & Assets
+
+- Place images, PDFs, or any other files next to your `.md` files
+- Reference them with relative paths: `![photo](cat.jpg)`
+- Non-markdown files are copied verbatim to `out/files/` alongside the converted HTML pages
+
+### Example Structure
+
+```
+md/
+├── index.md                 ← Homepage content (Welcome text, images, etc.)
+├── cat.jpg                  ← Image referenced by index.md
+├── guides/
+│   ├── getting-started.md   ← A regular page
+│   └── guide-image.png      ← Image referenced by getting-started.md
+└── notes/
+    └── setup-notes.md
+```
+
 ## How It Works
 
-1. Place `.md` files in the `md/` directory, organized however you like
-2. Run the converter — it walks the entire tree, converts every `.md` to `.html`, copies non-markdown assets, and generates `out/index.html`
+1. Place `.md` files and assets in the `md/` directory, organized however you like
+2. Run the converter — it walks the entire tree, converts every `.md` to `.html`, copies non-markdown assets, generates the homepage from `md/index.md`, and builds a navigation sidebar
 3. Open `out/index.html` in any browser — everything works with relative paths
 
 ## Requirements

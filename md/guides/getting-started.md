@@ -30,16 +30,24 @@ Some **bold** and *italic* text.
 
 ## Building the Site
 
-Run the converter:
+Run the converter from the project root:
 
 ```bash
-python src/cli.py
+python -m src.cli
 ```
+
+Or use the convenience scripts:
+
+| Platform | Command |
+|----------|---------|
+| **Windows** | `.\rebuild.bat` or double-click `rebuild.bat` |
+| **macOS / Linux** | `./rebuild.sh` |
 
 This will:
 1. Convert all `.md` files to `.html`
 2. Copy any images or other assets
-3. Generate the `index.html` page
+3. Generate the `index.html` homepage from `md/index.md`
+4. Build a navigation sidebar with links to all pages
 
 ## Viewing the Result
 
