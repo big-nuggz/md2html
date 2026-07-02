@@ -1,5 +1,7 @@
 # md2html
 
+![screenshot](screenshot.png)
+
 A **zero-dependency** (beyond `markdown` + `pygments`) static site generator that converts Markdown files to clean, responsive HTML pages. No server needed — just open the generated files in your browser.
 
 ## Quick Start
