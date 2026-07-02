@@ -1,6 +1,7 @@
 """Generates the index.html page from the Welcome markdown content."""
 
 import re
+import json
 from pathlib import Path
 
 from .builder import OUT_ROOT, MD_ROOT
@@ -10,6 +11,17 @@ from .converter import convert_md_to_html
 # Load the index template from file
 TEMPLATES_DIR = Path(__file__).resolve().parent / 'templates'
 INDEX_TEMPLATE = (TEMPLATES_DIR / 'index.html').read_text(encoding='utf-8')
+
+# Load preferences
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+PREFERENCES_PATH = PROJECT_ROOT / 'preferences.json'
+if PREFERENCES_PATH.exists():
+    with open(PREFERENCES_PATH, encoding='utf-8') as f:
+        _prefs = json.load(f)
+else:
+    _prefs = {}
+SITE_NAME = _prefs.get('site_name', 'md2html')
+SITE_TITLE = _prefs.get('site_title', 'Home')
 
 
 def _rewrite_index_links(html_body: str) -> str:
@@ -53,6 +65,8 @@ def generate_index() -> None:
 
     index_html = INDEX_TEMPLATE.format(
         body=body_html,
+        site_name=SITE_NAME,
+        site_title=SITE_TITLE,
     )
 
     index_path = OUT_ROOT / 'index.html'

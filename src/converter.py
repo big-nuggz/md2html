@@ -9,6 +9,17 @@ from pathlib import Path
 TEMPLATES_DIR = Path(__file__).resolve().parent / 'templates'
 PAGE_TEMPLATE = (TEMPLATES_DIR / 'page.html').read_text(encoding='utf-8')
 
+# Load preferences
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+PREFERENCES_PATH = PROJECT_ROOT / 'preferences.json'
+if PREFERENCES_PATH.exists():
+    import json
+    with open(PREFERENCES_PATH, encoding='utf-8') as f:
+        _prefs = json.load(f)
+else:
+    _prefs = {}
+SITE_NAME = _prefs.get('site_name', 'md2html')
+
 
 def convert_md_to_html(md_content: str) -> str:
     """Convert Markdown string to HTML body content."""
@@ -81,6 +92,7 @@ def wrap_in_template(html_body: str, title: str, rel_depth: int) -> str:
 
     return PAGE_TEMPLATE.format(
         title=title,
+        site_name=SITE_NAME,
         css_path=css_path,
         index_path=index_path,
         js_path=js_path,
