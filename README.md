@@ -75,6 +75,10 @@ md2html/
 - `markdown` library
 - `pygments` (for syntax highlighting)
 
+## AI
+
+The entire md2html project was developed using AI assistance, specifically the **DeepSeek-V4-Flash** model.
+
 ## License
 
 MIT
