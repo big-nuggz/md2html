@@ -4,6 +4,8 @@
 
 A **zero-dependency** (beyond `markdown` + `pygments`) static site generator that converts Markdown files to clean, responsive HTML pages. No server needed — just open the generated files in your browser.
 
+Could be used to make your own knowledge database, instruction manuals, blogs, or any simple websites. If you wish to host the website online, it's possible by uploading generated files into any web server.
+
 ## Quick Start
 
 ```bash
@@ -138,7 +140,7 @@ md/
 
 ## AI
 
-The entire md2html project was developed using AI assistance, specifically the **DeepSeek-V4-Flash** model.
+The project was developed with AI assistance, specifically the **DeepSeek-V4-Flash** model.
 
 ## License
 
