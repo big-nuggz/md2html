@@ -27,7 +27,7 @@ def inject_nav_into_pages() -> None:
         return
 
     base_nav_html = generate_nav_tree_html()
-    placeholder = '<div class="side-nav-tree" id="sideNavTree">'
+    placeholder = '<div class="flex-1 overflow-y-auto py-2" id="sideNavTree">'
 
     # Update files under out/files/
     for html_path in list(FILES_ROOT.rglob('*.html')):
