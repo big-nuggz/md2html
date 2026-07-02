@@ -15,6 +15,15 @@ python -m src.cli
 open out/index.html
 ```
 
+### Convenience Rebuild Scripts
+
+For even easier rebuilding, use the provided scripts:
+
+| Platform | Command |
+|----------|---------|
+| **Windows** | Double-click `rebuild.bat` or run `.\rebuild.bat` |
+| **macOS / Linux** | Run `./rebuild.sh` |
+
 ## Usage
 
 ```bash
