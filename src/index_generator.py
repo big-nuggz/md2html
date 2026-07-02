@@ -1,9 +1,9 @@
-"""Generates the index.html page with a navigation tree of all converted files."""
+"""Generates the index.html page from the Welcome markdown content."""
 
 from pathlib import Path
-from html import escape
 
-from .builder import OUT_ROOT, FILES_ROOT
+from .builder import OUT_ROOT, MD_ROOT
+from .converter import convert_md_to_html
 
 
 # Load the index template from file
@@ -11,62 +11,21 @@ TEMPLATES_DIR = Path(__file__).resolve().parent / 'templates'
 INDEX_TEMPLATE = (TEMPLATES_DIR / 'index.html').read_text(encoding='utf-8')
 
 
-def _build_tree_html(directory: Path, rel_root: Path) -> str:
-    """Recursively build an HTML tree of the files directory.
-
-    Returns a string of nested <details>/<summary> elements for directories
-    and <a> links for files.
-    """
-    items = []
-    entries = sorted(directory.iterdir(), key=lambda p: (not p.is_dir(), p.name.lower()))
-
-    for entry in entries:
-        rel = entry.relative_to(rel_root)
-        name = entry.name
-
-        if entry.is_dir():
-            children_html = _build_tree_html(entry, rel_root)
-            # Check if there are any .html files inside (recursively)
-            has_html = any(f.suffix == '.html' for f in entry.rglob('*'))
-            if not has_html and not children_html.strip():
-                continue
-            items.append(
-                f'        <details class="folder" open>\n'
-                f'            <summary class="folder-name">&#128193; {escape(name)}</summary>\n'
-                f'            <div class="folder-contents">\n'
-                f'{children_html}'
-                f'            </div>\n'
-                f'        </details>'
-            )
-        elif entry.suffix == '.html':
-            # Build relative path from index.html to this file
-            file_rel = rel.as_posix()
-            display_name = entry.stem.replace('-', ' ').replace('_', ' ').title()
-            items.append(
-                f'        <div class="file-item">'
-                f'<a href="files/{file_rel}">&#128196; {escape(display_name)}</a>'
-                f'</div>'
-            )
-
-    return '\n'.join(items)
-
-
 def generate_index() -> None:
-    """Generate or update the index.html file at out/index.html."""
-    from datetime import datetime
+    """Generate or update the index.html page at out/index.html.
 
-    if not FILES_ROOT.exists():
-        FILES_ROOT.mkdir(parents=True, exist_ok=True)
+    Uses md/index.md as the body content. Falls back to a simple message
+    if the file doesn't exist.
+    """
+    welcome_path = MD_ROOT / 'index.md'
+    if welcome_path.exists():
+        md_content = welcome_path.read_text(encoding='utf-8')
+        body_html = convert_md_to_html(md_content)
+    else:
+        body_html = '<p>Welcome to dividendos. Add content to <code>md/index.md</code> to customize this page.</p>'
 
-    tree_html = _build_tree_html(FILES_ROOT, FILES_ROOT)
-
-    if not tree_html.strip():
-        tree_html = '        <p class="empty-state">No files yet. Add .md files to the <code>md/</code> directory and run the converter.</p>'
-
-    now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     index_html = INDEX_TEMPLATE.format(
-        generated_date=now,
-        tree_html=tree_html,
+        body=body_html,
     )
 
     index_path = OUT_ROOT / 'index.html'

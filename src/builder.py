@@ -38,6 +38,11 @@ def _clean_orphans() -> None:
         rel = html_path.relative_to(FILES_ROOT)
         # Corresponding .md path in md/
         md_path = MD_ROOT / rel.with_suffix('.md')
+        # Special case: md/index.md is used for the homepage, not a regular page
+        if md_path.parent == MD_ROOT and md_path.stem == 'index':
+            html_path.unlink()
+            print(f"  Removed orphan: {html_path.relative_to(OUT_ROOT)} (index.md is reserved)")
+            continue
         if not md_path.exists():
             html_path.unlink()
             print(f"  Removed orphan: {html_path.relative_to(OUT_ROOT)}")
@@ -84,9 +89,12 @@ def build(targets: Optional[list[str]] = None) -> None:
             print("  No md/ directory found. Nothing to build.")
             return
 
-        # Convert all .md files
+        # Convert all .md files (except index.md which is used for the homepage)
         md_files = list(MD_ROOT.rglob('*.md')) + list(MD_ROOT.rglob('*.markdown'))
         for md_path in sorted(md_files):
+            # Skip root index.md — it's used for the homepage, not a regular page
+            if md_path.parent == MD_ROOT and md_path.stem == 'index':
+                continue
             _process_file(md_path)
 
         # Copy non-markdown assets
