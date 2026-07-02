@@ -14,6 +14,20 @@
     scroll-margin-top: 3.5rem;
 }
 
+/* --- Centered content blocks (images, tables, code) --- */
+.content img,
+.content table,
+.content pre {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.content pre {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
 .content h1 {
     font-size: 1.875rem;
     font-weight: 600;
@@ -94,17 +108,11 @@
 }
 
 .content pre {
-    background: #f6f8fa;
-    border: 1px solid #d0d7de;
+    background: #161b22;
+    border: 1px solid #30363d;
     border-radius: 6px;
     padding: 1rem;
-    overflow-x: auto;
     margin-bottom: 1rem;
-}
-
-.dark .content pre {
-    background: #161b22;
-    border-color: #30363d;
 }
 
 .content pre code {
