@@ -135,8 +135,10 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
-# Project specific - build output
-out/
+# Project specific - generated content (from md/ files)
+out/files/
+out/nav.json
+out/index.html
 
 # Project specific - generated files
 *.html

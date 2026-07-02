@@ -1,0 +1,367 @@
+/* ============================================
+   dividendos - Supplemental Styles
+   (Tailwind handles layout; this file handles
+    markdown content typography and nav tree.)
+   ============================================ */
+
+/* --- Markdown Content Typography --- */
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
+    scroll-margin-top: 3.5rem;
+}
+
+.content h1 {
+    font-size: 1.875rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid #d0d7de;
+}
+
+.dark .content h1 {
+    border-bottom-color: #30363d;
+}
+
+.content h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid #d0d7de;
+}
+
+.dark .content h2 {
+    border-bottom-color: #30363d;
+}
+
+.content h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.content h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.content p {
+    margin-bottom: 1rem;
+}
+
+.content a {
+    color: #0969da;
+    text-decoration: none;
+}
+
+.dark .content a {
+    color: #58a6ff;
+}
+
+.content a:hover {
+    text-decoration: underline;
+}
+
+.content ul,
+.content ol {
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+}
+
+.content li {
+    margin-bottom: 0.25rem;
+}
+
+.content code {
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    background: #f6f8fa;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+.dark .content code {
+    background: #161b22;
+}
+
+.content pre {
+    background: #f6f8fa;
+    border: 1px solid #d0d7de;
+    border-radius: 6px;
+    padding: 1rem;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+}
+
+.dark .content pre {
+    background: #161b22;
+    border-color: #30363d;
+}
+
+.content pre code {
+    background: none;
+    padding: 0;
+    font-size: 0.85rem;
+    line-height: 1.45;
+}
+
+.content blockquote {
+    border-left: 4px solid #0969da;
+    padding: 0.5rem 1rem;
+    margin: 0 0 1rem 0;
+    color: #656d76;
+    background: #f6f8fa;
+    border-radius: 0 6px 6px 0;
+}
+
+.dark .content blockquote {
+    border-left-color: #58a6ff;
+    color: #8b949e;
+    background: #161b22;
+}
+
+.content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+    display: block;
+    overflow-x: auto;
+}
+
+.content th,
+.content td {
+    border: 1px solid #d0d7de;
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+}
+
+.dark .content th,
+.dark .content td {
+    border-color: #30363d;
+}
+
+.content th {
+    background: #f6f8fa;
+    font-weight: 600;
+}
+
+.dark .content th {
+    background: #161b22;
+}
+
+.content tr:nth-child(even) {
+    background: #f6f8fa;
+}
+
+.dark .content tr:nth-child(even) {
+    background: #161b22;
+}
+
+.content hr {
+    border: none;
+    border-top: 1px solid #d0d7de;
+    margin: 1.5rem 0;
+}
+
+.dark .content hr {
+    border-top-color: #30363d;
+}
+
+.content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin: 1rem 0;
+}
+
+.content input[type="checkbox"] {
+    margin-right: 0.5rem;
+}
+
+/* --- Nav Tree (sidebar) --- */
+.nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-item {
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link {
+    display: block;
+    padding: 0.35rem 1rem 0.35rem 1.5rem;
+    color: #1f2328;
+    text-decoration: none;
+    font-size: 0.9rem;
+    border-left: 3px solid transparent;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.dark .nav-link {
+    color: #e6edf3;
+}
+
+.nav-link:hover {
+    background: #f6f8fa;
+    text-decoration: none;
+    border-left-color: #0969da;
+}
+
+.dark .nav-link:hover {
+    background: #161b22;
+    border-left-color: #58a6ff;
+}
+
+.nav-link.current {
+    background: #f6f8fa;
+    border-left-color: #0969da;
+    font-weight: 600;
+    color: #0969da;
+}
+
+.dark .nav-link.current {
+    background: #161b22;
+    border-left-color: #58a6ff;
+    color: #58a6ff;
+}
+
+.nav-folder-summary {
+    cursor: pointer;
+    padding: 0.35rem 1rem 0.35rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #656d76;
+    user-select: none;
+    list-style: none;
+}
+
+.dark .nav-folder-summary {
+    color: #8b949e;
+}
+
+.nav-folder-summary::-webkit-details-marker {
+    display: none;
+}
+
+.nav-folder-summary::before {
+    content: '\25B6';
+    display: inline-block;
+    margin-right: 0.4rem;
+    font-size: 0.7rem;
+    transition: transform 0.2s;
+    color: #656d76;
+}
+
+.dark .nav-folder-summary::before {
+    color: #8b949e;
+}
+
+.nav-details[open] > .nav-folder-summary::before {
+    transform: rotate(90deg);
+}
+
+.nav-folder-summary:hover {
+    color: #0969da;
+}
+
+.dark .nav-folder-summary:hover {
+    color: #58a6ff;
+}
+
+.nav-folder-contents {
+    padding-left: 0.5rem;
+}
+
+.nav-details .nav-list .nav-link {
+    padding-left: 2rem;
+}
+
+.nav-empty {
+    padding: 1rem;
+    color: #656d76;
+    font-size: 0.85rem;
+    font-style: italic;
+    text-align: center;
+}
+
+.dark .nav-empty {
+    color: #8b949e;
+}
+
+/* --- Index Page File Tree --- */
+.folder {
+    margin-bottom: 0.25rem;
+}
+
+.folder-name {
+    cursor: pointer;
+    font-weight: 600;
+    padding: 0.25rem 0;
+    user-select: none;
+}
+
+.folder-name:hover {
+    color: #0969da;
+}
+
+.dark .folder-name:hover {
+    color: #58a6ff;
+}
+
+.folder-contents {
+    padding-left: 1.5rem;
+    margin-top: 0.25rem;
+}
+
+.file-item {
+    padding: 0.2rem 0;
+}
+
+.file-item a {
+    display: inline-block;
+    padding: 0.15rem 0;
+    color: #0969da;
+}
+
+.dark .file-item a {
+    color: #58a6ff;
+}
+
+.file-item a:hover {
+    color: #0550ae;
+}
+
+.dark .file-item a:hover {
+    color: #79c0ff;
+}
+
+.empty-state {
+    color: #656d76;
+    text-align: center;
+    padding: 2rem;
+    font-style: italic;
+}
+
+.dark .empty-state {
+    color: #8b949e;
+}
+
+.empty-state code {
+    background: #ffffff;
+}
+
+.dark .empty-state code {
+    background: #0d1117;
+}
