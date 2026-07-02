@@ -36,3 +36,5 @@ print(hello("md2html"))
 | `src/` | Python conversion scripts |
 
 > **Tip:** You can organize files into subdirectories inside `md/` and they'll be mirrored in the output.
+>
+> Customize your site name and title in `preferences.json` at the project root.

@@ -40,6 +40,22 @@ python -m src.cli md/notes/
 python -m src.cli md/a.md md/b.md
 ```
 
+## Configuration
+
+Site-wide preferences are stored in `preferences.json` at the project root:
+
+```json
+{
+    "site_name": "md2html",
+    "site_title": "Home"
+}
+```
+
+| Key | Purpose |
+|-----|---------|
+| `site_name` | Used in page titles (`Page Title - site_name`), the header logo, and the footer |
+| `site_title` | The title shown on the homepage's `<title>` tag |
+
 ## Project Structure
 
 ```
@@ -52,11 +68,15 @@ md2html/
 ├── md/                 # Your Markdown source files
 │   └── (any structure)
 ├── out/                # Generated output
-│   ├── index.html      # Main navigation page
+│   ├── index.html      # Main page (from md/index.md)
+│   ├── nav.json        # Navigation tree data
 │   ├── css/style.css   # Stylesheet
 │   ├── js/script.js    # JavaScript
 │   └── files/          # Mirrors md/ structure as .html
+├── preferences.json    # Site configuration
 ├── requirements.txt
+├── rebuild.bat         # Windows rebuild script
+├── rebuild.sh          # macOS/Linux rebuild script
 └── README.md
 ```
 
