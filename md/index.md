@@ -1,3 +1,5 @@
+![Cat](cat.jpg)
+
 # Welcome to md2html
 
 This is a **static site** generated from Markdown files.

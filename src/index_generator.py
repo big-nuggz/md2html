@@ -1,5 +1,6 @@
 """Generates the index.html page from the Welcome markdown content."""
 
+import re
 from pathlib import Path
 
 from .builder import OUT_ROOT, MD_ROOT
@@ -9,6 +10,31 @@ from .converter import convert_md_to_html
 # Load the index template from file
 TEMPLATES_DIR = Path(__file__).resolve().parent / 'templates'
 INDEX_TEMPLATE = (TEMPLATES_DIR / 'index.html').read_text(encoding='utf-8')
+
+
+def _rewrite_index_links(html_body: str) -> str:
+    """Rewrite image/src paths to point to the files/ directory.
+
+    The index page is at out/index.html, but assets (images, PDFs, etc.)
+    are copied to out/files/. This function prefixes img src paths
+    with 'files/' so they resolve correctly.
+    """
+    def replace_src(match):
+        attr = match.group(1)  # 'src' or 'href'
+        quote = match.group(2)
+        url = match.group(3)
+        # Don't rewrite external URLs or already-prefixed paths
+        if url.startswith(('http://', 'https://', '#', 'files/', '../', './', 'mailto:')):
+            return f'{attr}={quote}{url}{quote}'
+        return f'{attr}={quote}files/{url}{quote}'
+
+    # Rewrite img src="..." and src='...'
+    html_body = re.sub(
+        r'(src)=(["\'])((?!http://|https://|#|files/|\.\./|\./|mailto:)[^\s"\']+)\2',
+        replace_src,
+        html_body,
+    )
+    return html_body
 
 
 def generate_index() -> None:
@@ -21,6 +47,7 @@ def generate_index() -> None:
     if welcome_path.exists():
         md_content = welcome_path.read_text(encoding='utf-8')
         body_html = convert_md_to_html(md_content)
+        body_html = _rewrite_index_links(body_html)
     else:
         body_html = '<p>Welcome to md2html. Add content to <code>md/index.md</code> to customize this page.</p>'
 
