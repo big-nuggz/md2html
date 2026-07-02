@@ -140,6 +140,7 @@ out/
 
 # Project specific - generated files
 *.html
+!src/templates/*.html
 
 # IDEs
 .vscode/
